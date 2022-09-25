@@ -59,7 +59,6 @@ export const ContextProvider = ({ children }) => {
   //     const localColor = window.localStorage.getItem("colorsMode");
   //     localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
   //     localColor ? setColor(localColor) : setCurrentColor("primary");
-  
 
   //   setMountedComponent(true);
   //   // eslint-disable-next-line

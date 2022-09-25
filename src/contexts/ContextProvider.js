@@ -21,7 +21,7 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("primary");
 
   // eslint-disable-next-line
-  // const [mountedComponent, setMountedComponent] = useState(false);
+  const [mountedComponent, setMountedComponent] = useState(false);
 
   // const colorMode = (e) => {
   //   useMemo(
@@ -54,16 +54,16 @@ export const ContextProvider = ({ children }) => {
     setThemeSettings(false);
   };
 
-  // useEffect(() => {
-  //     const localTheme = window.localStorage.getItem("themeMode");
-  //     const localColor = window.localStorage.getItem("colorsMode");
-  //     localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
-  //     localColor ? setColor(localColor) : setCurrentColor("primary");
+  useEffect(() => {
+      const localTheme = window.localStorage.getItem("themeMode");
+      const localColor = window.localStorage.getItem("colorsMode");
+      localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
+      localColor ? setColor(localColor) : setCurrentColor("primary");
   
 
-  //   setMountedComponent(true);
-  //   // eslint-disable-next-line
-  // }, []);
+    setMountedComponent(true);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     // Remove the server-side injected CSS.

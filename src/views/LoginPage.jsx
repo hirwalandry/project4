@@ -115,7 +115,10 @@ function LoginPage(props) {
               (formik.touched.email && errors.email)
             }
           />
-
+          <FormControlLabel
+            control={<Checkbox name="checkedB" color="primary" />}
+            label="Remember me"
+          />
           <Button
             type="submit"
             color={currentColor}
@@ -124,12 +127,11 @@ function LoginPage(props) {
               color: "white",
               "&:hover": {
                 background: currentColor,
-                btnstyle,
-                textTransform: "none",
               },
             }}
             variant="contained"
             disabled={!formik.isValid || formik.isSubmitting}
+            style={{ btnstyle, textTransform: "none", marginTop: "2px" }}
             fullWidth
           >
             Sign in
@@ -137,7 +139,11 @@ function LoginPage(props) {
         </form>
       </Box>
       <Typography>
-        <Link href="#">Sign in with OPT</Link>
+        <Link href="#">Forgot password ?</Link>
+      </Typography>
+      <Typography>
+        {" "}
+        Do you have an account ?<Link href="signup">Sign Up</Link>
       </Typography>
       {/* Form */}
     </FormModal>

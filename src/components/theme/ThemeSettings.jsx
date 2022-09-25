@@ -90,17 +90,7 @@ function ThemeSettings() {
                   >
                     <IconButton
                       onClick={() => setColor(item.color)}
-                      sx={{
-                        marginRight: "5px",
-                        textTransform: "none",
-                        background: item.color,
-                        // color: currentColor,
-                        // borderColor: currentColor,
-                        "&:hover": {
-                          background: item.color,
-                          boxShadow: "0 12px 15px rgb(140 152 164 / 10%)",
-                        },
-                      }}
+                      sx={{ background: item.color }}
                     >
                       <DoneIcon fontSize={"2px"} style={{ color: "white" }} />
                     </IconButton>

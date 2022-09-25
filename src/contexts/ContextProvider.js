@@ -54,16 +54,15 @@ export const ContextProvider = ({ children }) => {
     setThemeSettings(false);
   };
 
-  useEffect(() => {
-      const localTheme = window.localStorage.getItem("themeMode");
-      const localColor = window.localStorage.getItem("colorsMode");
-      localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
-      localColor ? setColor(localColor) : setCurrentColor("green");
-  
+  // useEffect(() => {
+  //   const localTheme = window.localStorage.getItem("themeMode");
+  //   const localColor = window.localStorage.getItem("colorsMode");
+  //   localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
+  //   localColor ? setColor(localColor) : setCurrentColor("green");
 
-    // setMountedComponent(true);
-    // eslint-disable-next-line
-  }, []);
+  //   // setMountedComponent(true);
+  //   // eslint-disable-next-line
+  // }, []);
 
   useEffect(() => {
     // Remove the server-side injected CSS.

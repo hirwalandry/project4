@@ -12,7 +12,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { LoginPage, AddBookings } from "./views";
-
 function App() {
   const { openModal, themeSettings, setThemeSettings, currentColor } =
     useStateContext();

@@ -22,7 +22,6 @@ const languages = [
 function ThemeSettings() {
   const { themeSettings, setThemeSettings, mode, colorMode, setColor } =
     useStateContext();
-  
   const [language, setLanguage] = useState("United States");
   const handleChange = ({ currentTaget: Input }) => {
     const countryLanguage = { ...languages };
@@ -91,7 +90,17 @@ function ThemeSettings() {
                   >
                     <IconButton
                       onClick={() => setColor(item.color)}
-                      sx={{ background: item.color }}
+                      sx={{
+                        marginRight: "5px",
+                        textTransform: "none",
+                        background: item.color,
+                        // color: currentColor,
+                        // borderColor: currentColor,
+                        "&:hover": {
+                          background: item.color,
+                          boxShadow: "0 12px 15px rgb(140 152 164 / 10%)",
+                        },
+                      }}
                     >
                       <DoneIcon fontSize={"2px"} style={{ color: "white" }} />
                     </IconButton>

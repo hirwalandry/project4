@@ -4,10 +4,8 @@ import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 
 function Select({ font, label, name, errors, options, ...rest }) {
-  console.log(options);
-  console.log(options);
   return (
-    <Box>
+    <Box minWidth={200} marginBottom={2}>
       <TextField
         {...rest}
         id={name}

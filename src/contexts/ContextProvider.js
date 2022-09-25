@@ -54,20 +54,20 @@ export const ContextProvider = ({ children }) => {
     setThemeSettings(false);
   };
 
-  // useEffect(() => {
-  //   try {
-  //     const localTheme = window.localStorage.getItem("themeMode");
-  //     const localColor = window.localStorage.getItem("colorsMode");
-  //     localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
-  //     localColor ? setColor(localColor) : setCurrentColor("red");
-  //   } catch {
-  //     colorMode.toggleColorMode("light");
-  //     setCurrentColor("red");
-  //   }
+  useEffect(() => {
+    try {
+      const localTheme = window.localStorage.getItem("themeMode");
+      // const localColor = window.localStorage.getItem("colorsMode");
+      localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
+      // localColor ? setColor(localColor) : setCurrentColor("red");
+    } catch {
+      colorMode.toggleColorMode("light");
+      // setCurrentColor("red");
+    }
 
-  //   // setMountedComponent(true);
-  //   // eslint-disable-next-line
-  // }, []);
+    // setMountedComponent(true);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     // Remove the server-side injected CSS.

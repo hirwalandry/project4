@@ -1,27 +1,21 @@
 import React from "react";
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
+import Box from "@mui/material/Box";
 
-function Select({ font, label, name, errors, options, ...rest }) {
+function Input({ font, label, name, errors, ...rest }) {
   return (
-    <Box minWidth={200} marginBottom={2}>
+    <Box marginBottom={2} minWidth={400}>
       <TextField
         {...rest}
         id={name}
         label={label}
         name={name}
         variant="standard"
-        select
-      >
-        {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.value}
-          </MenuItem>
-        ))}
-      </TextField>
+        fullWidth
+      />
+      {errors && <Box className="alert alert-warning">{errors}</Box>}
     </Box>
   );
 }
 
-export default Select;
+export default Input;

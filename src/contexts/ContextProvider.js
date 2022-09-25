@@ -49,6 +49,7 @@ export const ContextProvider = ({ children }) => {
   );
 
   const setColor = (color) => {
+    console.log(color);
     setCurrentColor(color);
     localStorage.setItem("colorsMode", color);
     setThemeSettings(false);
@@ -87,10 +88,10 @@ export const ContextProvider = ({ children }) => {
           setThemeSettings,
           mode,
           setMode,
-          // colorMode,
+          colorMode,
           currentColor,
           setCurrentColor,
-          // setColor,
+          setColor,
           slideIndex,
           setSlideIndex,
         }}

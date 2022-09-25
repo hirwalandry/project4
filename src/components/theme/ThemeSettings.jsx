@@ -22,6 +22,7 @@ const languages = [
 function ThemeSettings() {
   const { themeSettings, setThemeSettings, mode, colorMode, setColor } =
     useStateContext();
+  
   const [language, setLanguage] = useState("United States");
   const handleChange = ({ currentTaget: Input }) => {
     const countryLanguage = { ...languages };

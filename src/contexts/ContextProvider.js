@@ -21,7 +21,7 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("primary");
 
   // eslint-disable-next-line
-  const [mountedComponent, setMountedComponent] = useState(false);
+  // const [mountedComponent, setMountedComponent] = useState(false);
 
   // const colorMode = (e) => {
   //   useMemo(
@@ -61,7 +61,7 @@ export const ContextProvider = ({ children }) => {
       localColor ? setColor(localColor) : setCurrentColor("primary");
   
 
-    setMountedComponent(true);
+    // setMountedComponent(true);
     // eslint-disable-next-line
   }, []);
 

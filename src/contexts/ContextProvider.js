@@ -18,10 +18,10 @@ export const ContextProvider = ({ children }) => {
   const [slideIndex, setSlideIndex] = useState(1);
   const [themeSettings, setThemeSettings] = useState(false);
   const [mode, setMode] = useState("light");
-  const [currentColor, setCurrentColor] = useState("primary");
+  const [currentColor, setCurrentColor] = useState("green");
 
   // eslint-disable-next-line
-  const [mountedComponent, setMountedComponent] = useState(false);
+  // const [mountedComponent, setMountedComponent] = useState(false);
 
   // const colorMode = (e) => {
   //   useMemo(
@@ -54,15 +54,15 @@ export const ContextProvider = ({ children }) => {
     setThemeSettings(false);
   };
 
-  // useEffect(() => {
-  //     const localTheme = window.localStorage.getItem("themeMode");
-  //     const localColor = window.localStorage.getItem("colorsMode");
-  //     localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
-  //     localColor ? setColor(localColor) : setCurrentColor("primary");
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem("themeMode");
+    const localColor = window.localStorage.getItem("colorsMode");
+    localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
+    localColor ? setColor(localColor) : setCurrentColor("green");
 
-  //   setMountedComponent(true);
-  //   // eslint-disable-next-line
-  // }, []);
+    // setMountedComponent(true);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     // Remove the server-side injected CSS.

@@ -2,8 +2,8 @@ import React, {
   createContext,
   useContext,
   useState,
-  // useMemo,
-  // useEffect,
+  useMemo,
+  useEffect,
 } from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider } from "@mui/material/styles";
@@ -21,7 +21,7 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("primary");
 
   // eslint-disable-next-line
-  const [mountedComponent, setMountedComponent] = useState(false);
+  // const [mountedComponent, setMountedComponent] = useState(false);
 
   // const colorMode = (e) => {
   //   useMemo(
@@ -37,45 +37,46 @@ export const ContextProvider = ({ children }) => {
   //   localStorage.setItem("themeMode", e.target.value);
   //   setThemeSettings(false);
   // };
-  // const colorMode = useMemo(
-  //   () => ({
-  //     toggleColorMode: (e) => {
-  //       setMode(e.target.value);
-  //       localStorage.setItem("themeMode", e.target.value);
-  //       setThemeSettings(false);
-  //     },
-  //   }),
-  //   []
-  // );
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: (e) => {
+        setMode(e.target.value);
+        localStorage.setItem("themeMode", e.target.value);
+        setThemeSettings(false);
+      },
+    }),
+    []
+  );
 
-  // const setColor = (color) => {
-  //   setCurrentColor(color);
-  //   localStorage.setItem("colorsMode", color);
-  //   setThemeSettings(false);
-  // };
+  const setColor = (color) => {
+    setCurrentColor(color);
+    localStorage.setItem("colorsMode", color);
+    setThemeSettings(false);
+  };
 
-  // useEffect(() => {
-  //   try {
-  //     const localTheme = window.localStorage.getItem("themeMode");
-  //     const localColor = window.localStorage.getItem("colorsMode");
-  //     localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
-  //     localColor ? setColor(localColor) : setCurrentColor("red");
-  //   } catch {
-  //     colorMode.toggleColorMode("light");
-  //     setCurrentColor("red");
-  //   }
+  useEffect(() => {
+    try {
+      const localTheme = window.localStorage.getItem("themeMode");
+      const localColor = window.localStorage.getItem("colorsMode");
+      localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
+      localColor ? setColor(localColor) : setCurrentColor("red");
+    } catch {
+      colorMode.toggleColorMode("light");
+      setCurrentColor("red");
+    }
 
-  //   setMountedComponent(true);
-  //   // eslint-disable-next-line
-  // }, []);
+    // setMountedComponent(true);
+    // eslint-disable-next-line
+  }, []);
 
-  // useEffect(() => {
-  //   // Remove the server-side injected CSS.
-  //   const jssStyles = document.querySelector("#jss-server-side");
-  //   if (jssStyles) {
-  //     jssStyles.parentElement.removeChild(jssStyles);
-  //   }
-  // }, []);
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector("#jss-server-side");
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles);
+    }
+  }, []);
+
   return (
     <ThemeProvider theme={getTheme(mode)}>
       <StateContext.Provider

@@ -21,7 +21,7 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("primary");
 
   // eslint-disable-next-line
-  // const [mountedComponent, setMountedComponent] = useState(false);
+  const [mountedComponent, setMountedComponent] = useState(false);
 
   // const colorMode = (e) => {
   //   useMemo(
@@ -55,17 +55,13 @@ export const ContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    try {
       const localTheme = window.localStorage.getItem("themeMode");
       const localColor = window.localStorage.getItem("colorsMode");
       localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
-      localColor ? setColor(localColor) : setCurrentColor("red");
-    } catch {
-      colorMode.toggleColorMode("light");
-      // setCurrentColor("red");
-    }
+      localColor ? setColor(localColor) : setCurrentColor("primary");
+  
 
-    // setMountedComponent(true);
+    setMountedComponent(true);
     // eslint-disable-next-line
   }, []);
 

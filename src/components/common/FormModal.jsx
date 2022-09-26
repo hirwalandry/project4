@@ -1,5 +1,5 @@
 import React from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogTitle,
@@ -16,7 +16,7 @@ import { useStateContext } from "../../contexts/ContextProvider";
 
 function FormModal({ title, link, children }) {
   const theme = useTheme();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { openModal, setOpenModal } = useStateContext();
   const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="down" timeout={30} ref={ref} {...props} />;
@@ -33,10 +33,8 @@ function FormModal({ title, link, children }) {
       }}
       sx={{
         margin: "0 auto",
-        height: "75vh",
-        position: "absolute",
         padding: theme.spacing(2),
-        top: theme.spacing(5),
+        top: theme.spacing(3),
       }}
     >
       <DialogTitle>
@@ -55,6 +53,7 @@ function FormModal({ title, link, children }) {
             }}
             aria-label="Close"
             variant={"outlined"}
+            size="small"
             sx={{
               borderRadius: 2,
               minWidth: "auto",
@@ -63,7 +62,7 @@ function FormModal({ title, link, children }) {
               borderColor: alpha(theme.palette.divider, 0.2),
             }}
           >
-            <CloseIcon />
+            <CloseIcon sx={{fontSize: "20px"}} />
           </Button>
         </Box>
       </DialogTitle>

@@ -5,25 +5,25 @@ import  SidebarNav  from './SidebarNav';
 
 function Sidebar({ pages, open, variant, onClose }) {
     return (
-        <Drawer
+      <Drawer
         anchor="left"
         onClose={() => onClose()}
         open={open}
         variant={variant}
         sx={{
-          '& .MuiPaper-root': {
-            width: '100%',
+          "& .MuiPaper-root": {
+            width: "100%",
             maxWidth: 280,
           },
         }}
       >
         <Box
           sx={{
-            height: '100%',
+            height: "100%",
             padding: 1,
           }}
         >
-          <SidebarNav pages={pages} />
+          <SidebarNav onClose={() => onClose()}  pages={pages} />
         </Box>
       </Drawer>
     );

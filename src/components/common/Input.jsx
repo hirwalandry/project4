@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 
 function Input({ font, label, name, errors, ...rest }) {
   return (
-    <Box marginBottom={2} minWidth={400}>
+    <Box marginBottom={2} minWidth={{xs: 200, sm: 400}}>
       <TextField
         {...rest}
         id={name}

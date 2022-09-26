@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import FormController from "../components/common/FormController";
 import FormModal from "../components/common/FormModal";
 import { useStateContext } from "../contexts/ContextProvider";
-import { Checkbox, Button, FormControlLabel, Box } from "@mui/material";
+import { Button, Box } from "@mui/material";
 
 // import { loginUser } from "../services/authService";
 
@@ -81,7 +81,7 @@ function AddBookings(props) {
             options={countries}
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            style={{ marginTop: "10" }}
+            sx={{ marginTop: "10px", width: "100%" }}
             fullWidth
             value={formik.values.dropLocation}
             className="form-control"
@@ -91,7 +91,7 @@ function AddBookings(props) {
             }
           />
 
-          <Box sx={{ display: "flex" }}>
+          <Box sx={{ display: "flex", width: "100%" }}>
             <FormController
               control="select"
               type="text"
@@ -101,12 +101,14 @@ function AddBookings(props) {
               onChange={formik.handleChange}
               value={formik.initialValues.verhicleType}
               className="form-control"
+              fullWidth
               sx={{ marginRight: "10px", width: "98%" }}
               errors={
                 (formik.touched.email && formik.errors.email) ||
                 (formik.touched.email && errors.email)
               }
             />
+
             <FormController
               control="select"
               type="text"
@@ -115,8 +117,8 @@ function AddBookings(props) {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
               value={formik.initialValues.bookNow}
+              fullWidth
               className="form-control"
-              sx={{ width: "100%" }}
               errors={
                 (formik.touched.email && formik.errors.email) ||
                 (formik.touched.email && errors.email)
@@ -126,6 +128,7 @@ function AddBookings(props) {
           <Button
             type="submit"
             color={currentColor}
+            fullWidth
             sx={{
               background: currentColor,
               color: "white",

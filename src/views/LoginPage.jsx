@@ -11,7 +11,6 @@ import {
   Typography,
   Link,
   FormControlLabel,
-  TextField,
   Box,
 } from "@mui/material";
 
@@ -74,7 +73,7 @@ function LoginPage(props) {
   });
 
   return (
-    <FormModal title="Sign in" link="/">
+    <FormModal title="Sign in" link="/" buttonName="Sign in with OTP">
       <Box align="center" marginBottom={2}>
         <Avatar style={avatarStyle}>
           <LockOutlinedIcon />
@@ -86,38 +85,38 @@ function LoginPage(props) {
         <form onSubmit={formik.handleSubmit}>
           {/* FormController Component takes attribute to specify the specified input */}
 
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Email Address"
-            type="email"
+          <FormController
+            control="select"
+            type="text"
+            label="Select Country"
+            options={countries}
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.initialValues.country}
+            className="form-control"
+            errors={
+              (formik.touched.email && formik.errors.email) ||
+              (formik.touched.email && errors.email)
+            }
             fullWidth
-            variant="standard"
           />
-          <Button
-            type="submit"
-            color={currentColor}
-            sx={{
-              background: currentColor,
-              color: "white",
-              "&:hover": {
-                background: currentColor,
-                btnstyle,
-                textTransform: "none",
-              },
-            }}
-            variant="contained"
-            disabled={!formik.isValid || formik.isSubmitting}
-            fullWidth
-          >
-            Sign in
-          </Button>
+          <FormController
+            control="input"
+            type="email"
+            label="Mobile Number Or Email"
+            id="email"
+            name="email"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
+            value={formik.values.email}
+            className="form-control"
+            errors={
+              (formik.touched.email && formik.errors.email) ||
+              (formik.touched.email && errors.email)
+            }
+          />
         </form>
       </Box>
-      <Typography>
-        <Link href="#">Sign in with OPT</Link>
-      </Typography>
       {/* Form */}
     </FormModal>
   );

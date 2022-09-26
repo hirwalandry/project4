@@ -52,7 +52,7 @@ function AddBookings(props) {
   });
 
   return (
-    <FormModal title="Add Bookings" link="/">
+    <FormModal title="Add Bookings" link="/" buttonName="Book now">
       {/* Formik callback method that takes formik as argument and perfom some login on Form componet */}
       <Box>
         {/* Form */}
@@ -125,26 +125,7 @@ function AddBookings(props) {
               }
             />
           </Box>
-          <Button
-            type="submit"
-            color={currentColor}
-            fullWidth
-            sx={{
-              background: currentColor,
-              color: "white",
-              "&:hover": {
-                background: currentColor,
-                textTransform: "none",
-                marginTop: "2px",
-              },
-            }}
-            variant="contained"
-            disabled={!formik.isValid || formik.isSubmitting}
-            style={{ btnstyle, textTransform: "none", marginTop: "2px" }}
-            fullWidth
-          >
-            Book now
-          </Button>
+         
         </form>
       </Box>
 

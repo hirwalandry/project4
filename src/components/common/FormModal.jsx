@@ -16,7 +16,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import { useStateContext } from "../../contexts/ContextProvider";
 
-function FormModal({ title, link, children }) {
+function FormModal({ title, link, children, buttonName }) {
   const theme = useTheme();
   const navigate = useNavigate();
   const { openModal, setOpenModal } = useStateContext();
@@ -78,18 +78,54 @@ function FormModal({ title, link, children }) {
         setOpenModal(false);
         navigate(link);
       }}
+      TransitionComponent={Transition}
+      elevation={10}
+      maxWidth="md"
     >
-      <DialogTitle>Subscribe</DialogTitle>
+      <DialogTitle>
+        <Typography variant="h6" component="span" fontWeight={600}>
+          {title}
+        </Typography>
+      </DialogTitle>
       <DialogContent>
-        <DialogContentText>
-          To subscribe to this website, please enter your email address here. We
-          will send updates occasionally.
-        </DialogContentText>
+        <DialogContentText></DialogContentText>
         {children}
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => {}}>Cancel</Button>
-        <Button onClick={() => {}}>Subscribe</Button>
+        <Button
+          onClick={() => {
+            setOpenModal(false);
+            navigate(link);
+          }}
+          sx={{
+            textTransform: "none",
+            color: "red",
+            borderColor: "red",
+            "&:hover": {
+              borderColor: "red",
+              boxShadow: "0 12px 15px rgb(140 152 164 / 10%)",
+            },
+          }}
+          color="red"
+          variant="outlined"
+        >
+          Cancel
+        </Button>
+        <Button
+          color={"primary"}
+          sx={{
+            background: "primary",
+            color: "white",
+            "&:hover": {
+              background: "primary",
+
+              textTransform: "none",
+            },
+          }}
+          variant="contained"
+        >
+          {buttonName}
+        </Button>
       </DialogActions>
     </Dialog>
   );

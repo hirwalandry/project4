@@ -11,6 +11,7 @@ import {
   Typography,
   Link,
   FormControlLabel,
+  TextField,
   Box,
 } from "@mui/material";
 
@@ -85,37 +86,15 @@ function LoginPage(props) {
         <form onSubmit={formik.handleSubmit}>
           {/* FormController Component takes attribute to specify the specified input */}
 
-          <FormController
-            control="select"
-            type="text"
-            label="Select Country"
-            options={countries}
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.initialValues.country}
-            className="form-control"
-            errors={
-              (formik.touched.email && formik.errors.email) ||
-              (formik.touched.email && errors.email)
-            }
-            fullWidth
-          />
-          <FormController
-            control="input"
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Email Address"
             type="email"
-            label="Mobile Number Or Email"
-            id="email"
-            name="email"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            className="form-control"
-            errors={
-              (formik.touched.email && formik.errors.email) ||
-              (formik.touched.email && errors.email)
-            }
+            fullWidth
+            variant="standard"
           />
-
           <Button
             type="submit"
             color={currentColor}

@@ -10,6 +10,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 import CssBaseline from "@mui/material/CssBaseline";
 import getTheme from "../theme";
+import AOS from "aos";
 
 const StateContext = createContext();
 
@@ -21,7 +22,7 @@ export const ContextProvider = ({ children }) => {
   const [currentColor, setCurrentColor] = useState("green");
 
   // eslint-disable-next-line
-  // const [mountedComponent, setMountedComponent] = useState(false);
+  const [mountedComponent, setMountedComponent] = useState(false);
 
   // const colorMode = (e) => {
   //   useMemo(
@@ -54,15 +55,15 @@ export const ContextProvider = ({ children }) => {
     setThemeSettings(false);
   };
 
-  // useEffect(() => {
-  //   const localTheme = window.localStorage.getItem("themeMode");
-  //   const localColor = window.localStorage.getItem("colorsMode");
-  //   localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
-  //   localColor ? setColor(localColor) : setCurrentColor("green");
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem("themeMode");
+    // const localColor = window.localStorage.getItem("colorsMode");
+    localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
+    // localColor ? setColor(localColor) : setCurrentColor("green");
 
-  //   // setMountedComponent(true);
-  //   // eslint-disable-next-line
-  // }, []);
+    setMountedComponent(true);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -71,7 +72,9 @@ export const ContextProvider = ({ children }) => {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-
+useEffect(() => {
+  AOS.refresh();
+}, [mountedComponent, mode]);
   return (
     <ThemeProvider theme={getTheme(mode)}>
       <StateContext.Provider

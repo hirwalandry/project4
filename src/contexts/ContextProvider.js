@@ -38,21 +38,21 @@ export const ContextProvider = ({ children }) => {
   //   localStorage.setItem("themeMode", e.target.value);
   //   setThemeSettings(false);
   // };
-  const colorMode = useMemo(
-    () => ({
-      toggleColorMode: (e) => {
-        setMode(e.target.value);
-        localStorage.setItem("themeMode", e.target.value);
-        setThemeSettings(false);
-      },
-    }),
-    []
-  );
+
+  const colorMode = (mode) => {
+    try {
+      window.localStorage.setItem("themeMode", mode);
+    } catch {
+      /* do nothing */
+    }
+
+    setMode(mode);
+  };
 
     const themeToggler = () => {
     mode === "light"
-      ? colorMode.toggleColorMode("dark")
-      : colorMode.toggleColorMode("light");
+      ? colorMode("dark")
+      : colorMode("light");
   };
   const setColor = (color) => {
     setCurrentColor(color);
@@ -63,7 +63,7 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     const localTheme = window.localStorage.getItem("themeMode");
     // const localColor = window.localStorage.getItem("colorsMode");
-    localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
+    localTheme ? setMode(localTheme) : colorMode("light");
     // localColor ? setColor(localColor) : setCurrentColor("green");
 
     setMountedComponent(true);

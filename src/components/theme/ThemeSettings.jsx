@@ -60,7 +60,7 @@ function ThemeSettings() {
                 <FormControlLabel
                   value="light"
                   name="theme"
-                  onChange={colorMode.toggleColorMode}
+                  onChange={colorMode.toggleColorMode("light")}
                   checked={mode === "light"}
                   control={<Radio />}
                   label="Light"
@@ -68,7 +68,7 @@ function ThemeSettings() {
                 <FormControlLabel
                   value="dark"
                   name="theme"
-                  onChange={colorMode.toggleColorMode}
+                  onChange={colorMode.toggleColorMode("dark")}
                   checked={mode === "dark"}
                   control={<Radio />}
                   label="Dark"

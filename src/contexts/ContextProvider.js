@@ -38,22 +38,17 @@ export const ContextProvider = ({ children }) => {
   //   localStorage.setItem("themeMode", e.target.value);
   //   setThemeSettings(false);
   // };
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: (e) => {
+        setMode(e.target.value);
+        localStorage.setItem("themeMode", e.target.value);
+        setThemeSettings(false);
+      },
+    }),
+    []
+  );
 
-  const colorMode = (mode) => {
-    try {
-      window.localStorage.setItem("themeMode", mode);
-    } catch {
-      /* do nothing */
-    }
-
-    setMode(mode);
-  };
-
-    const themeToggler = () => {
-    mode === "light"
-      ? colorMode("dark")
-      : colorMode("light");
-  };
   const setColor = (color) => {
     setCurrentColor(color);
     localStorage.setItem("colorsMode", color);
@@ -63,7 +58,7 @@ export const ContextProvider = ({ children }) => {
   useEffect(() => {
     const localTheme = window.localStorage.getItem("themeMode");
     // const localColor = window.localStorage.getItem("colorsMode");
-    localTheme ? setMode(localTheme) : colorMode("light");
+    localTheme ? setMode(localTheme) : colorMode.toggleColorMode("light");
     // localColor ? setColor(localColor) : setCurrentColor("green");
 
     setMountedComponent(true);
@@ -79,9 +74,10 @@ export const ContextProvider = ({ children }) => {
   }, []);
 useEffect(() => {
   AOS.refresh();
-}, [mountedComponent, themeToggler, mode]);
+}, [mountedComponent, mode]);
+
   return (
-    <ThemeProvider theme={getTheme(mode, themeToggler)}>
+    <ThemeProvider theme={getTheme(mode)}>
       <StateContext.Provider
         value={{
           openModal,

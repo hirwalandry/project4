@@ -50,7 +50,9 @@ export const ContextProvider = ({ children }) => {
   );
 
     const themeToggler = () => {
-    mode === 'light' ? setMode('dark') : setMode('light');
+    mode === "light"
+      ? colorMode.toggleColorMode("dark")
+      : colorMode.toggleColorMode("light");
   };
   const setColor = (color) => {
     setCurrentColor(color);

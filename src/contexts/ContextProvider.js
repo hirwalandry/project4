@@ -49,6 +49,9 @@ export const ContextProvider = ({ children }) => {
     []
   );
 
+    const themeToggler = () => {
+    mode === 'light' ? setMode('dark') : setMode('light');
+  };
   const setColor = (color) => {
     setCurrentColor(color);
     localStorage.setItem("colorsMode", color);
@@ -74,9 +77,9 @@ export const ContextProvider = ({ children }) => {
   }, []);
 useEffect(() => {
   AOS.refresh();
-}, [mountedComponent, mode]);
+}, [mountedComponent, themeToggler, mode]);
   return (
-    <ThemeProvider theme={getTheme(mode)}>
+    <ThemeProvider theme={getTheme(mode, themeToggler)}>
       <StateContext.Provider
         value={{
           openModal,

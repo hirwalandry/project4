@@ -13,6 +13,7 @@ import DoneIcon from "@mui/icons-material/Done";
 import { themeColors } from "./WebTheme";
 import { useStateContext } from "../../contexts/ContextProvider";
 import FormController from "../common/FormController";
+import {useTheme} from "@mui/material/styles"
 
 const languages = [
   { id: "1", value: "United States" },
@@ -20,8 +21,10 @@ const languages = [
   { id: "3", value: "French" },
 ];
 function ThemeSettings() {
+  const theme = useTheme()
   const { themeSettings, setThemeSettings, mode, colorMode, setColor } =
     useStateContext();
+  const { themeToggler } = theme;
   const [language, setLanguage] = useState("United States");
   const handleChange = ({ currentTaget: Input }) => {
     const countryLanguage = { ...languages };
@@ -60,7 +63,7 @@ function ThemeSettings() {
                 <FormControlLabel
                   value="light"
                   name="theme"
-                  onChange={colorMode.toggleColorMode}
+                  onChange={() => themeToggler()}
                   checked={mode === "light"}
                   control={<Radio />}
                   label="Light"
@@ -68,7 +71,7 @@ function ThemeSettings() {
                 <FormControlLabel
                   value="dark"
                   name="theme"
-                  onChange={colorMode.toggleColorMode}
+                  onChange={() => themeToggler()}
                   checked={mode === "dark"}
                   control={<Radio />}
                   label="Dark"
